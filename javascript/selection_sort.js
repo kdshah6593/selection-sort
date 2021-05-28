@@ -1,5 +1,14 @@
 function selectionSort(arr) {
   // type your code here
+  sorted = [];
+
+  while (arr.length > 0) {
+    min = Math.min(...arr)
+    idx = arr.indexOf(min)
+    arr.splice(idx, 1)
+    sorted.push(min);
+  }
+  return sorted
 }
 
 if (require.main === module) {
@@ -15,6 +24,15 @@ if (require.main === module) {
   for (let i = 0; i < 100; ++i) {
     longInput.push(Math.random());
   }
+
+  startTime = Date.now()
+  for (let i = 0; i <1000; i++) {
+    selectionSort([-1,4,2])
+    selectionSort(longInput)
+  }
+  currentTime = Date.now()
+  runTime = (currentTime - startTime) / 2000
+  console.log(runTime)
 }
 
 module.exports = selectionSort;
